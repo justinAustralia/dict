@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+        <h1>Guess the word</h1>
+        <input type="button" value="Show me the definition" onClick="randomWordReturned = getRandomWordDefinition()">
+        <p> 
+        <h3> Your answer:  <input type="text" id="myguess" name="myguess" 
+                        onkeydown = "if (event.keyCode == 13)
+                        checkMyGuess()"> 
+        </h3>
+        <p>
+        <input type="button" value="Submit" id="check" onClick="checkMyGuess()">
+        <input type="button" value="Reveal answer:" id="attempts" onClick="iGiveUp()">
+        <p>
+<!-- <input type="button" value="Define my own word" onClick="getWordDefinitions()">  -->
+        
+        
+        
+        <div id="definitions"></div>
+        
+    </body>
+    
+</html>
+
+
+<script src="./localdictionary.json" type = "text/javascript"> </script>
+<script src = "./definition.js" type = "text/javascript"/></script>
+<script src = "./commonword.js" type = "text/javascript"/></script>
+
+
+<!--
+<h3> Answer:  <input type="text" id="myguess" name="myguess" 
+                        onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('check').click()"> 
+-->
+                        
