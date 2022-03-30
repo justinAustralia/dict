@@ -6,7 +6,7 @@ const DEFINITIONS_DIV = document.getElementById('definitions');
 
 var guessCount = 0;
 var attemptButton = document.getElementById('attempts');
-randomWordReturned = '';
+//randomWordReturned = '';
 
 const fetchWordDefinitions = async word => {
     console.log(`Making request for definitions of ${word}...`);
@@ -35,9 +35,8 @@ const getWordDefinitions = () => {
 };
 
 const getRandomWordDefinition = () => {
-    guessCount = 0;
-    randomWord = getRandomWord();
-    console.log(randomWord);
+   
+    definitionCount = 0;
     if (randomWord == null || randomWord == '') {
         return alert('Error: RandomWord is null');
     }
@@ -45,7 +44,11 @@ const getRandomWordDefinition = () => {
     fetchWordDefinitions(randomWord)
         .then(defintions => {
             defintions.forEach(d => {
-                DEFINITIONS_DIV.innerHTML += `<p>${d}</p>`;
+                 if (definitionCount <= guessCount) {
+                  DEFINITIONS_DIV.innerHTML += `<p>${d}</p>`;
+                  definitionCount = definitionCount + 1;
+                  
+                  }
             });
         })
         .catch(_ => {
@@ -62,25 +65,23 @@ const checkMyGuess = () => {
     }
     
     guessCount = guessCount+1;
-    console.log(guessCount)
     
     attemptButton.value = 'Guess '+guessCount.toString();
     
     
-if (myguess == randomWordReturned) {
-  // position = randomWordReturned.indexOf(myguess); 
-   
-  // if (position > -1 && ) {
-    attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
-    return alert('Correct!');
+  if (myguess == randomWord) {
+      attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
+      guessCount = 0;
+      return alert('Correct!');
         
     } else {
      attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
+       getRandomWordDefinition();
     }
     
 };
 
 const iGiveUp = () => {
-attemptButton.value = "The word was '"+randomWordReturned+"'";
-guessCount = 0;
+  attemptButton.value = "The word was '"+randomWord+"'";
+  guessCount = 0;
 };
