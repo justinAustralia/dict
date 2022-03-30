@@ -14,6 +14,8 @@ console.log('randomWord is: '+allWords.data[randomIndex]);
 randomWord = allWords.data[randomIndex]
 
 attemptButton.value = 'Reveal Answer';
+myguess.value = '';
+
 
 return (randomWord)
 
