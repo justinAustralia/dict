@@ -165,20 +165,22 @@
 
 <body>
         <h1>Guess the Word</h1>
-        <input type="button" value="Give me a new definition" onClick="getRandomWord(); getRandomWordDefinition()" >
+       <input type="button" value="Give me a new definition!" style = "font-size:larger" onClick="getRandomWord(); getRandomWordDefinition()" > 
+        
+        
+        
         <p> 
         <h3> Your answer:  <input type="text" id="myguess" name="myguess" 
                         onkeydown = "if (event.keyCode == 13)
                         checkMyGuess()"> 
         </h3>
         <p>
-        <input type="button" value="Submit" id="check" onClick="checkMyGuess()">
-        <input type="button" value="Reveal answer:" id="attempts" onClick="iGiveUp()">
+        <input type="button" value="Submit" id="check" style = "font-size:larger" onClick="checkMyGuess()">
+        <input type="button" value="Reveal answer:" id="attempts" style = "font-size:larger" onClick="iGiveUp()">
         <p>
        <!-- <input type="button" value="Define my own word" onClick="getWordDefinitions()">  -->
         
-        
-        
+       
         <div id="definitions"></div>
         
     </body>
