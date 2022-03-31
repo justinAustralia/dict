@@ -35,6 +35,7 @@ const getWordDefinitions = () => {
 };
 
 const getRandomWordDefinition = () => {
+
    
     definitionCount = 0;
     if (randomWord == null || randomWord == '') {
@@ -66,18 +67,27 @@ const checkMyGuess = () => {
     
     guessCount = guessCount+1;
     
-    attemptButton.value = 'Guess '+guessCount.toString();
+        
+    if (guessCount >= 10) {
+        guessCount = 0;
+        attemptButton.value = "The word was '"+randomWord+"'";
+        return alert('Too many tries');
+    }   else {
     
-    
-  if (myguess == randomWord) {
-      attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
-      guessCount = 0;
-      return alert('Correct!');
+      attemptButton.value = 'Guess '+guessCount.toString();
+        
+      if (myguess == randomWord) {
+        attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
+        guessCount = 0;
+        return alert('Correct!');
         
     } else {
-     attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
-       getRandomWordDefinition();
+         attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
+         getRandomWordDefinition();
     }
+    
+    }
+    
     
 };
 
