@@ -41,7 +41,10 @@ const getRandomWordDefinition = () => {
     if (randomWord == null || randomWord == '') {
         return alert('Error: RandomWord is null');
     }
-    DEFINITIONS_DIV.innerHTML = '';
+    
+    wordLen = randomWord.length;
+    DEFINITIONS_DIV.innerHTML = '<i> Word length '+wordLen+' letters <\i>';
+    DEFINITIONS_DIV.innerHTML += '';
     fetchWordDefinitions(randomWord)
         .then(defintions => {
             defintions.forEach(d => {
@@ -77,15 +80,19 @@ const checkMyGuess = () => {
       lcguess = myguess.toLowerCase();
       lcguess = lcguess.trim();
     
-      attemptButton.value = 'Guess '+guessCount.toString();
+    //  attemptButton.value = 'Guess '+guessCount.toString();
+     
         
       if (lcguess == randomWord) {
+        attemptButton.style.backgroundColor = 'lime';
         attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
         guessCount = 0;
-        return alert('Correct!');
+        // return alert('Correct!');
         
     } else {
+        attemptButton.style.backgroundColor = 'red';
          attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
+          
          getRandomWordDefinition();
     }
     

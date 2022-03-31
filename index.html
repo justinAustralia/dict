@@ -143,7 +143,8 @@
       }
       body {
         height: 100%;
-        background-color: var(--color-background);
+       /*  background-color: var(--color-background); */
+       background-color: beige;
         margin: 0;
         padding: 0;
         /* Prevent scrollbar appearing on page transition */
@@ -165,7 +166,7 @@
 
 <body>
         <h1>Guess the Word</h1>
-       <input type="button" value="Give me a new definition!" style = "font-size:larger" onClick="getRandomWord(); getRandomWordDefinition()" > 
+       <input type="button" value="Give me a new definition!" style = "font-size:larger;background:yellow" onClick="getRandomWord(); getRandomWordDefinition()" > 
         
         
         
@@ -175,7 +176,7 @@
                         checkMyGuess()"> 
         </h3>
         <p>
-        <input type="button" value="Submit" id="check" style = "font-size:larger" onClick="checkMyGuess()">
+        <input type="button" value="Submit" id="check" style = "font-size:larger;background:yellow" onClick="checkMyGuess()">
         <input type="button" value="Reveal answer:" id="attempts" style = "font-size:larger" onClick="iGiveUp()">
         <p>
        <!-- <input type="button" value="Define my own word" onClick="getWordDefinitions()">  -->
