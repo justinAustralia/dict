@@ -74,9 +74,11 @@ const checkMyGuess = () => {
         return alert('Too many tries');
     }   else {
     
+      lcguess = myguess.toLowerCase();
+    
       attemptButton.value = 'Guess '+guessCount.toString();
         
-      if (myguess == randomWord) {
+      if (lcguess == randomWord) {
         attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
         guessCount = 0;
         return alert('Correct!');
