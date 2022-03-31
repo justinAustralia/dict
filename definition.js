@@ -75,6 +75,7 @@ const checkMyGuess = () => {
     }   else {
     
       lcguess = myguess.toLowerCase();
+      lcguess = lcguess.trim();
     
       attemptButton.value = 'Guess '+guessCount.toString();
         
