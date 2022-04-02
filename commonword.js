@@ -31,9 +31,11 @@ totalWordCount = Object.keys(allWords.data).length;
 
 
 const randomIndex = Math.floor(Math.random() * totalWordCount);
-//randomWord = allWords.data[randomIndex]
+//fetchRandomWord();
 
-fetchRandomWord();
+randomWord = allWords.data[randomIndex]
+
+
 
 
 console.log('randomWord is: '+randomWord);
