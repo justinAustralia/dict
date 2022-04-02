@@ -17,6 +17,7 @@ const fetchWordDefinitions = async word => {
         .flatMap(d => d.definition);
 };
 
+/*
 const getWordDefinitions = () => {
     const myguess = document.getElementById('myguess').value;
     if (myguess == null || myguess == '') {
@@ -30,9 +31,11 @@ const getWordDefinitions = () => {
             });
         })
         .catch(_ => {
-            DEFINITIONS_DIV.innerHTML += `<p>Error: Could not retrive any defintions for ${myguess}.</p>`;
+            DEFINITIONS_DIV.innerHTML += `<p>Error: Could not retrive any defintions for "${myguess}".</p>`;
+            DEFINITIONS_DIV.innerHTML += `<p>Word is too obscure. Click button for another definition .</p>`;
         });
 };
+*/
 
 const getRandomWordDefinition = () => {
 
@@ -56,7 +59,8 @@ const getRandomWordDefinition = () => {
             });
         })
         .catch(_ => {
-            DEFINITIONS_DIV.innerHTML += `<p>Error: Could not retrive any defintions for ${randomWord}.</p>`;
+            DEFINITIONS_DIV.innerHTML += `<p>Error: Could not retrive any defintions for "${randomWord}".</p>`;
+            DEFINITIONS_DIV.innerHTML += `<p><b>Word is too obscure. Click again for another definition.</b></p>`;
         });
         return (randomWord);
 };
