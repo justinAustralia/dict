@@ -38,8 +38,8 @@ fetchRandomWord();
 
 console.log('randomWord is: '+randomWord);
 
-attemptButton.value = 'Reveal Answer';
-attemptButton.style.backgroundColor = 'wheat';
+attemptButton.value = '----';
+attemptButton.style.backgroundColor = 'white';
 myguess.value = '';
 
 

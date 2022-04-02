@@ -95,7 +95,7 @@ const checkMyGuess = () => {
         
     } else {
         attemptButton.style.backgroundColor = 'red';
-         attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
+        attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
           
          getRandomWordDefinition();
     }
