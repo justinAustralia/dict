@@ -83,8 +83,9 @@ const checkMyGuess = () => {
     
       lcguess = myguess.toLowerCase();
       lcguess = lcguess.trim();
-    
-    //  attemptButton.value = 'Guess '+guessCount.toString();
+      
+      
+     //  
      
         
       if (lcguess == randomWord) {
@@ -96,12 +97,13 @@ const checkMyGuess = () => {
     } else {
         attemptButton.style.backgroundColor = 'red';
         attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
+        
           
          getRandomWordDefinition();
     }
     
     }
-    
+    myguess = document.getElementById('myguess').value = '';
     
 };
 
