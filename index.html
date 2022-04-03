@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="cache-control" content="no-cache" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>JustDefine</title>
+    <title>JustDefineIt</title>
     <meta name="author" content="justin baker">
     <meta name="apple-mobile-web-app-title" content="Defineatly" />
     <meta name="application-name" content="Puzzle" />
@@ -14,30 +14,7 @@
     <meta name="sourceApp" content="games-crosswords" />
     
     <style>
-      /* NYT Fonts */
-      @font-face {
-        font-family: 'nyt-karnakcondensed';
-        src: url('./fonts/karnakcondensed-normal-700.woff2') format('woff2'),
-          url('./fonts/karnakcondensed-normal-700.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-      }
-
-      @font-face {
-        font-family: 'nyt-franklin';
-        src: url('./fonts/franklin-normal-500.woff2') format('woff2'),
-          url('./fonts/franklin-normal-500.woff') format('woff');
-        font-weight: 500;
-        font-style: normal;
-      }
-
-      @font-face {
-        font-family: 'nyt-franklin-700';
-        src: url('./fonts/franklin-normal-700.woff2') format('woff2'),
-          url('./fonts/franklin-normal-700.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-      }
+     
 
       /* Global Styles & Colors */
       :root {
@@ -62,89 +39,19 @@
 
       }
       
-      /* Light theme colors */
-      :root {
-        --color-tone-1: #000000;
-        --color-tone-2: #787c7e;
-        --color-tone-3: #878a8c;
-        --color-tone-4: #d3d6da;
-        --color-tone-5: #edeff1;
-        --color-tone-6: #f6f7f8;
-        --color-tone-7: #ffffff;
-        --color-nav-hover: #f4f4f4;
-        --opacity-50: rgba(255, 255, 255, 0.5);
-      }
-
-      /* Dark Theme Colors */
-      .nightmode {
-        --color-tone-1: #ffffff;
-        --color-tone-2: #818384;
-        --color-tone-3: #565758;
-        --color-tone-4: #3a3a3c;
-        --color-tone-5: #272729;
-        --color-tone-6: #1a1a1b;
-        --color-tone-7: #121213;
-        --color-nav-hover: #2f2f31;
-        --opacity-50: rgba(0, 0, 0, 0.5);
-
-        /* dark mode icons */
-        --spelling-bee: url('./images/nav-icons/SpellingBee-Icon-Normalized-Color.svg');
-        --daily: url('./images/nav-icons/Crossword-Icon-Normalized-Color.svg');
-        --mini: url('./images/nav-icons/Mini-Icon-Normalized-Color.svg');
-        --tiles: url('./images/nav-icons/Tiles-Icon-Normalized-Color.svg');
-        --sudoku: url('./images/nav-icons/Sudoku-Icon-Normalized-Color.svg');
-        --vertex: url('./images/nav-icons/Vertex-Icon-Normalized-Color.svg');
-        --letter-boxed: url('./images/nav-icons/LetterBoxed-Icon-Normalized-Color.svg');
-        --nyt: url('./images/nav-icons/NYT-Icon-Normalized-Color.svg');
-        --athletic: url('./images/nav-icons/Athletic-Icon-Normalized-Color.svg');
+     
       }
       /* Constant colors and colors derived from theme */
-      :root,
-      .nightmode {
-        --color-background: var(--color-tone-7);
-      }
-      :root {
-        --color-present: var(--yellow);
-        --color-correct: var(--green);
-        --color-absent: var(--color-tone-2);
-        --tile-text-color: var(--color-tone-7);
-        --key-text-color: var(--color-tone-1);
-        --key-evaluated-text-color: var(--color-tone-7);
-        --key-bg: var(--color-tone-4);
-        --key-bg-present: var(--color-present);
-        --key-bg-correct: var(--color-correct);
-        --key-bg-absent: var(--color-absent);
-        --modal-content-bg: var(--color-tone-7);
-      }
-      .nightmode {
-        --color-present: var(--darkendYellow);
-        --color-correct: var(--darkendGreen);
-        --color-absent: var(--color-tone-4);
-        --tile-text-color: var(--color-tone-1);
-        --key-text-color: var(--color-tone-1);
-        --key-evaluated-text-color: var(--color-tone-1);
-        --key-bg: var(--color-tone-2);
-        --key-bg-present: var(--color-present);
-        --key-bg-correct: var(--color-correct);
-        --key-bg-absent: var(--color-absent);
-        --modal-content-bg: var(--color-tone-7);
-      }
-      .colorblind {
-        --color-correct: var(--orange);
-        --color-present: var(--blue);
-        --tile-text-color: var(--white);
-        --key-bg-present: var(--color-present);
-        --key-bg-correct: var(--color-correct);
-        --key-bg-absent: var(--color-absent);
-      }
-
+      
       html {
         height: 100%;
       }
       body {
         height: 100%;
        /*  background-color: var(--color-background); */
-       background-color: beige;
+        background-color: beige;
+       background-image: url("cool.png"); 
+        
         margin: 0;
         padding: 0;
         /* Prevent scrollbar appearing on page transition */
@@ -165,8 +72,14 @@
 
 
 <body>
-        <h1>Guess the Word</h1>
-       <input type="button" value="Click for a new definition!" style = "font-size:larger;background:wheat" onClick="getRandomWord(); getRandomWordDefinition()" > 
+        
+  
+        
+        <h1>JustDefineIt</h1>
+       
+       
+       
+       <input type="button" value="Click for a new definition!" style = "font-size:larger;background:#3630a3;color:white;" onClick="getRandomWord(); getRandomWordDefinition()" > 
         
         
         
@@ -176,8 +89,8 @@
                         checkMyGuess()"> 
         </h3>
         <p>
-        <input type="button" value="Submit" id="check" style = "font-size:larger;background:wheat" onClick="checkMyGuess()">
-        <input type="button" value="Give Up" id="quit" style = "font-size:larger;background:wheat" onClick="iGiveUp()">
+        <input type="button" value="Submit" id="check" style = "font-size:larger;background:#3630a3;color:white;" onClick="checkMyGuess()">
+        <input type="button" value="Give Up" id="quit" style = "font-size:larger;background:#3630a3;color:white;" onClick="iGiveUp()">
         <input type="button" value="----" id="attempts" style = "font-size:larger;background:white"">
         <p>
        <!-- <input type="button" value="Define my own word" onClick="getWordDefinitions()">  -->
