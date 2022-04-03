@@ -11,13 +11,14 @@ var request = new XMLHttpRequest();
 request.open("GET", RANDOM_WORD_DICT, false);
 request.send(null);
 
+guessCount = 0;
+guessList ='';
+
 
 s = request.responseText;
 answer = s.match(/"([^"]+)"/)[1];
-
-
-
 randomWord = answer;  
+
 
 
 }
@@ -43,7 +44,8 @@ console.log('randomWord is: '+randomWord);
 attemptButton.value = '----';
 attemptButton.style.backgroundColor = 'white';
 myguess.value = '';
-
+guessCount = 0;
+guessList ='';
 
 return (randomWord)
 

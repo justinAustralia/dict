@@ -6,6 +6,8 @@ const DEFINITIONS_DIV = document.getElementById('definitions');
 
 var guessCount = 0;
 var attemptButton = document.getElementById('attempts');
+
+var guessList ='';
 //randomWordReturned = '';
 
 const fetchWordDefinitions = async word => {
@@ -17,25 +19,7 @@ const fetchWordDefinitions = async word => {
         .flatMap(d => d.definition);
 };
 
-/*
-const getWordDefinitions = () => {
-    const myguess = document.getElementById('myguess').value;
-    if (myguess == null || myguess == '') {
-        return alert('Error: You must enter a word to fetch');
-    }
-    DEFINITIONS_DIV.innerHTML = '';
-    fetchWordDefinitions(myguess)
-        .then(defintions => {
-            defintions.forEach(d => {
-                DEFINITIONS_DIV.innerHTML += `<p>${d}</p>`;
-            });
-        })
-        .catch(_ => {
-            DEFINITIONS_DIV.innerHTML += `<p>Error: Could not retrive any defintions for "${myguess}".</p>`;
-            DEFINITIONS_DIV.innerHTML += `<p>Word is too obscure. Click button for another definition .</p>`;
-        });
-};
-*/
+
 
 const getRandomWordDefinition = () => {
 
@@ -46,7 +30,11 @@ const getRandomWordDefinition = () => {
     }
     
     wordLen = randomWord.length;
-    DEFINITIONS_DIV.innerHTML = '<i> Word length '+wordLen+' letters <\i>';
+    
+    if (guessCount ==0 )
+      DEFINITIONS_DIV.innerHTML = '<i> Word length: '+wordLen+'<\i>';
+    else 
+      DEFINITIONS_DIV.innerHTML = '<i> Word length: '+wordLen+', Guesses: '+guessList +'<\i>';
     DEFINITIONS_DIV.innerHTML += '';
     fetchWordDefinitions(randomWord)
         .then(defintions => {
@@ -75,7 +63,7 @@ const checkMyGuess = () => {
     guessCount = guessCount+1;
     
         
-    if (guessCount >= 10) {
+    if (guessCount >= 6) {
         guessCount = 0;
         attemptButton.value = "The word was '"+randomWord+"'";
         return alert('Too many tries');
@@ -83,8 +71,12 @@ const checkMyGuess = () => {
     
       lcguess = myguess.toLowerCase();
       lcguess = lcguess.trim();
-      
-      
+    
+      if (guessCount > 1) {
+        guessList = guessList + ', '+ lcguess;
+      } else {  guessList = lcguess ;  } 
+     
+    
      //  
      
         
@@ -103,7 +95,7 @@ const checkMyGuess = () => {
     }
     
     }
-    myguess = document.getElementById('myguess').value = '';
+    document.getElementById('myguess').value = '';
     
 };
 
