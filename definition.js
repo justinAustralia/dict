@@ -1,8 +1,33 @@
 
 
+;
+/*
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Host': 'mashape-community-urban-dictionary.p.rapidapi.com',
+		'X-RapidAPI-Key': '14e2e88569msh7b45d9c539dfc88p18e8fajsn13996baf9a1c'
+	}
+};
+
+const fetchUrbanWord = async word => {
+   // https://rapidapi.com/community/api/urban-dictionary
+
+  console.log('PPP '+word)
+  
+   fetch('https://mashape-community-urban-dictionary.p.rapidapi.com/define?term='+word, options)
+	.then(response => response.json()) 
+	.then(response => console.log('TTT '+response))
+	.catch(err => console.error(err));
+ 
+  
+};
+*/
+
 const DICTIONARY_API_BASE_URL =
     'https://api.dictionaryapi.dev/api/v2/entries/en/';
-const DEFINITIONS_DIV = document.getElementById('definitions');
+const DEFINITIONS_DIV = document.getElementById('definitions')
+
 
 var guessCount = 0;
 var attemptButton = document.getElementById('attempts');
@@ -21,6 +46,7 @@ const fetchWordDefinitions = async word => {
 
 
 
+
 const getRandomWordDefinition = () => {
 
    
@@ -28,6 +54,7 @@ const getRandomWordDefinition = () => {
     if (randomWord == null || randomWord == '') {
         return alert('Error: RandomWord is null');
     }
+    
     
     wordLen = randomWord.length;
     
@@ -71,6 +98,8 @@ const checkMyGuess = () => {
     
       lcguess = myguess.toLowerCase();
       lcguess = lcguess.trim();
+      
+     
     
       if (guessCount > 1) {
         guessList = guessList + ', '+ lcguess;
@@ -84,18 +113,20 @@ const checkMyGuess = () => {
         attemptButton.style.backgroundColor = 'lime';
         attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
         guessCount = 0;
-        // return alert('Correct!');
+        
+        document.getElementById('myguess').value = '';
         
     } else {
         attemptButton.style.backgroundColor = 'red';
         attemptButton.value = 'Incorrect. Attempt: '+guessCount.toString();
-        
+       document.getElementById('myguess').value = randomWord.substring(0,guessCount);
+       
           
-         getRandomWordDefinition();
+       getRandomWordDefinition();
     }
     
     }
-    document.getElementById('myguess').value = '';
+    
     
 };
 
