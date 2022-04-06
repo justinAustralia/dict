@@ -95,8 +95,8 @@ const checkMyGuess = () => {
         guessCount = 0;
         attemptButton.style.backgroundColor = 'yellow';
         attemptButton.value = "The word was '"+randomWord+"'";
-       clearInterval(myTimer);
-      document.getElementById("progressBar").value = 0;
+     //  clearInterval(myTimer);
+      //document.getElementById("progressBar").value = 0;
         return alert('Too many tries');
     }   else {
     
@@ -114,8 +114,8 @@ const checkMyGuess = () => {
      
         
       if (lcguess == randomWord) {
-        clearInterval(myTimer);
-        document.getElementById("progressBar").value = 0;
+       // clearInterval(myTimer);
+       // document.getElementById("progressBar").value = 0;
         attemptButton.style.backgroundColor = 'lime';
         attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
         guessCount = 0;
