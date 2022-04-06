@@ -1,6 +1,7 @@
 
 randomWord = '';
-var timeLeft = 15;
+const WAIT_TIME = 30;
+var timeLeft = WAIT_TIME;
 
 var myTimer = null;
 
@@ -34,9 +35,9 @@ function setTimer () {
     if(timeLeft <= 0){
       clearInterval(myTimer);
       iGiveUp();
-      timeLeft = 15;
+      timeLeft = WAIT_TIME;
     }
-    document.getElementById("progressBar").value = 15 - timeLeft;
+    document.getElementById("progressBar").value = WAIT_TIME - timeLeft;
      timeLeft -= 1;
     }, 1000);
     
