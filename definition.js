@@ -87,12 +87,16 @@ const checkMyGuess = () => {
         return alert('Error: Please enter a guess');
     }
     
+    
     guessCount = guessCount+1;
     
         
     if (guessCount >= 6) {
         guessCount = 0;
+        attemptButton.style.backgroundColor = 'yellow';
         attemptButton.value = "The word was '"+randomWord+"'";
+        clearInterval(myTimer);
+        document.getElementById("progressBar").value = 0;
         return alert('Too many tries');
     }   else {
     
@@ -110,6 +114,8 @@ const checkMyGuess = () => {
      
         
       if (lcguess == randomWord) {
+        clearInterval(myTimer);
+        document.getElementById("progressBar").value = 0;
         attemptButton.style.backgroundColor = 'lime';
         attemptButton.value = 'Correct! Got it in  '+guessCount.toString();
         guessCount = 0;
@@ -131,6 +137,8 @@ const checkMyGuess = () => {
 };
 
 const iGiveUp = () => {
+  attemptButton.style.backgroundColor = 'yellow';
   attemptButton.value = "The word was '"+randomWord+"'";
+  randomWord = '';
   guessCount = 0;
 };

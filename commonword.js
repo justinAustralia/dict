@@ -1,5 +1,9 @@
 
 randomWord = '';
+var timeLeft = 15;
+
+var myTimer = null;
+
 // Use https://random-word-api.herokuapp.com/home
 RANDOM_WORD_DICT = 'https://random-word-api.herokuapp.com/word?number=1&swear=0';
 
@@ -24,6 +28,19 @@ randomWord = answer;
 }
 
 
+function setTimer () {
+  
+  myTimer = setInterval(function(){
+    if(timeLeft <= 0){
+      clearInterval(myTimer);
+      iGiveUp();
+      timeLeft = 15;
+    }
+    document.getElementById("progressBar").value = 15 - timeLeft;
+     timeLeft -= 1;
+    }, 1000);
+    
+}
 
 const getRandomWord = () => {
 
@@ -37,15 +54,16 @@ const randomIndex = Math.floor(Math.random() * totalWordCount);
 randomWord = allWords.data[randomIndex]
 
 
-
-
 console.log('randomWord is: '+randomWord);
+
 
 attemptButton.value = '----';
 attemptButton.style.backgroundColor = 'white';
 myguess.value = '';
 guessCount = 0;
 guessList ='';
+
+setTimer ();
 
 return (randomWord)
 
