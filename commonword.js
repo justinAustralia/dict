@@ -63,7 +63,7 @@ myguess.value = '';
 guessCount = 0;
 guessList ='';
 
-setTimer ();
+//setTimer ();
 
 return (randomWord)
 
