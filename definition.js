@@ -1,28 +1,37 @@
+var TOKEN = '411c545f696ffeed4cc823465d458374e8b89ced';
+var owlResponse;
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-;
-/*
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Host': 'mashape-community-urban-dictionary.p.rapidapi.com',
-		'X-RapidAPI-Key': '14e2e88569msh7b45d9c539dfc88p18e8fajsn13996baf9a1c'
-	}
-};
+async function fetchOwlDefinitions(word) {
 
-const fetchUrbanWord = async word => {
-   // https://rapidapi.com/community/api/urban-dictionary
+   
+   await fetch('https://owlbot.info/api/v4/dictionary/'+word, {
+     headers: {
+     'Authorization': 'Token ' + TOKEN
+     } 
+   })
+	.then(response =>  response.json()) 
+	.then (response =>  {
+      // console.log('AAA '+getObjects(response,'','No definition'));
+       noDefs = response.definitions.length;
+      // for (i=0; i<noDefs; i++) console.log(i+") "+response.definitions[i].definition);
+       owlResponse = response;
+       return (1);
+   })
+	.catch(err => {
+    console.error(err);
+    owlResponse = undefined;
+    return (0);
+    })
+ 
+return (0);
 
-  console.log('PPP '+word)
-  
-   fetch('https://mashape-community-urban-dictionary.p.rapidapi.com/define?term='+word, options)
-	.then(response => response.json()) 
-	.then(response => console.log('TTT '+response))
-	.catch(err => console.error(err));
+}
  
   
-};
-*/
 
 const DICTIONARY_API_BASE_URL =
     'https://api.dictionaryapi.dev/api/v2/entries/en/';
@@ -36,6 +45,8 @@ var guessList ='';
 //randomWordReturned = '';
 
 const fetchWordDefinitions = async word => {
+
+    
     console.log(`Making request for definitions of ${word}...`);
     const response = await fetch(DICTIONARY_API_BASE_URL + word);
     const json = await response.json();
@@ -47,7 +58,7 @@ const fetchWordDefinitions = async word => {
 
 
 
-const getRandomWordDefinition = () => {
+async function getRandomWordDefinition  ()  {
 
    
     definitionCount = 0;
@@ -63,21 +74,28 @@ const getRandomWordDefinition = () => {
     else 
       DEFINITIONS_DIV.innerHTML = '<i> Word length: '+wordLen+', Guesses: '+guessList +'<\i>';
     DEFINITIONS_DIV.innerHTML += '';
-    fetchWordDefinitions(randomWord)
-        .then(defintions => {
-            defintions.forEach(d => {
-                 if (definitionCount <= guessCount) {
-                  DEFINITIONS_DIV.innerHTML += `<p>${d}</p>`;
+    
+    owlDefs = await fetchOwlDefinitions(randomWord);
+    
+    if ((owlResponse ==='undefined') || (typeof(owlResponse) === 'undefined')) {
+      DEFINITIONS_DIV.innerHTML = '';
+      noDefs = 0;
+      
+      return alert ('Word: '+'"'+randomWord+'"'+' is too obscure. Please click for a new word');
+   
+    } else  noDefs =  owlResponse.definitions.length
+   
+   
+    for (i=0; i<noDefs; i++) {
+          definition = owlResponse.definitions[i].definition;
+          if (definitionCount <= guessCount) {
+                  DEFINITIONS_DIV.innerHTML += `<p>${definition}</p>`;
                   definitionCount = definitionCount + 1;
                   
                   }
-            });
-        })
-        .catch(_ => {
-            DEFINITIONS_DIV.innerHTML += `<p>Error: Could not retrive any defintions for "${randomWord}".</p>`;
-            DEFINITIONS_DIV.innerHTML += `<p><b>Word is too obscure. Click again for another definition.</b></p>`;
-        });
-        return (randomWord);
+    }
+          
+   return (randomWord);
 };
 
 

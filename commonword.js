@@ -6,7 +6,8 @@ var timeLeft = WAIT_TIME;
 var myTimer = null;
 
 // Use https://random-word-api.herokuapp.com/home
-RANDOM_WORD_DICT = 'https://random-word-api.herokuapp.com/word?number=1&swear=0';
+//RANDOM_WORD_DICT = 'https://random-word-api.herokuapp.com/word?number=1&swear=0';
+RANDOM_WORD_DICT = 'https://random-word-api.herokuapp.com/word';
 
 async function fetchRandomWord () {
 
@@ -48,11 +49,16 @@ const getRandomWord = () => {
 var allWords = JSON.parse(data);
 totalWordCount = Object.keys(allWords.data).length;
 
+checkbox = document.getElementById('obscureToggle').checked;
 
-const randomIndex = Math.floor(Math.random() * totalWordCount);
-//fetchRandomWord();
+if (checkbox) fetchRandomWord();
+else  {
+  const randomIndex = Math.floor(Math.random() * totalWordCount);
+  randomWord = allWords.data[randomIndex]
+}
 
-randomWord = allWords.data[randomIndex]
+
+
 
 
 console.log('randomWord is: '+randomWord);
