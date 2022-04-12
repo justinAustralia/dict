@@ -11,7 +11,7 @@ RANDOM_WORD_DICT = 'https://random-word-api.herokuapp.com/word';
 
 async function fetchRandomWord () {
 
-console.log(`Making request for randwom word`);
+console.log(`Making request for random word`);
 
 var request = new XMLHttpRequest();
 request.open("GET", RANDOM_WORD_DICT, false);

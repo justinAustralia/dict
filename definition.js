@@ -41,6 +41,7 @@ const DEFINITIONS_DIV = document.getElementById('definitions')
 var guessCount = 0;
 var attemptButton = document.getElementById('attempts');
 
+
 var guessList ='';
 //randomWordReturned = '';
 
@@ -80,8 +81,13 @@ async function getRandomWordDefinition  ()  {
     if ((owlResponse ==='undefined') || (typeof(owlResponse) === 'undefined')) {
       DEFINITIONS_DIV.innerHTML = '';
       noDefs = 0;
-      
-      return alert ('Word: '+'"'+randomWord+'"'+' is too obscure. Please click for a new word');
+     // attemptButton.style.backgroundColor = 'orange';
+      //attemptButton.value = "'"+randomWord+"' is too obscure. Trying again";
+      console.log('Word: '+'"'+randomWord+'"'+' is too obscure');
+      sleep (500);
+      onClick=document.getElementById("definition").click();
+      return;
+    //  return alert ('Word: '+'"'+randomWord+'"'+' is too obscure. Please click for a new word');
    
     } else  noDefs =  owlResponse.definitions.length
    
