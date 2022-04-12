@@ -67,31 +67,29 @@ async function getRandomWordDefinition  ()  {
         return alert('Error: RandomWord is null');
     }
     
-    
     wordLen = randomWord.length;
     
-    if (guessCount ==0 )
-      DEFINITIONS_DIV.innerHTML = '<i> Word length: '+wordLen+'<\i>';
-    else 
-      DEFINITIONS_DIV.innerHTML = '<i> Word length: '+wordLen+', Guesses: '+guessList +'<\i>';
-    DEFINITIONS_DIV.innerHTML += '';
+    
     
     owlDefs = await fetchOwlDefinitions(randomWord);
     
     if ((owlResponse ==='undefined') || (typeof(owlResponse) === 'undefined')) {
       DEFINITIONS_DIV.innerHTML = '';
       noDefs = 0;
-     // attemptButton.style.backgroundColor = 'orange';
-      //attemptButton.value = "'"+randomWord+"' is too obscure. Trying again";
       console.log('Word: '+'"'+randomWord+'"'+' is too obscure');
-      sleep (500);
+      sleep (250);
       onClick=document.getElementById("definition").click();
       return;
     //  return alert ('Word: '+'"'+randomWord+'"'+' is too obscure. Please click for a new word');
    
     } else  noDefs =  owlResponse.definitions.length
    
-   
+   if (guessCount ==0 )
+      DEFINITIONS_DIV.innerHTML = '<i> Word length: '+wordLen+'<\i>';
+    else 
+      DEFINITIONS_DIV.innerHTML = '<i> Word length: '+wordLen+', Guesses: '+guessList +'<\i>';
+    DEFINITIONS_DIV.innerHTML += '';
+    
     for (i=0; i<noDefs; i++) {
           definition = owlResponse.definitions[i].definition;
           if (definitionCount <= guessCount) {
