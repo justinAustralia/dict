@@ -166,11 +166,11 @@ const iGiveUp = () => {
 };
 
 function giveHelp () {
-  var helpStr = 'Hit [Click for new definition!] to get the dictionary definition of a mystery word.\n'; 
-  helpStr +="Try to guess the word by entering it in the text box and then hit [Submit]\n"
+  var helpStr = '[Click for new definition!] to get mystery word dictionary definition.\n'; 
+  helpStr +="Try to guess the word by typing it in the text box and then [Submit]\n"
   helpStr +="If your guess is wrong, another part of the definition will be given as a clue (if there is one) ";
-  helpStr +="along with an additional letter of the mystery word. \n";
-  helpStr +="[Give Up] reveals the word if you can’t work it out.";
+  helpStr +="along with another letter of the mystery word. \n";
+  helpStr +="The answer will be presented after too many tries or [Give Up] at any time.";
 
 alert(helpStr);
 }
