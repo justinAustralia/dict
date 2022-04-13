@@ -74,7 +74,7 @@ async function getRandomWordDefinition  ()  {
     owlDefs = await fetchOwlDefinitions(randomWord);
     
     if ((owlResponse ==='undefined') || (typeof(owlResponse) === 'undefined')) {
-      DEFINITIONS_DIV.innerHTML = '';
+      DEFINITIONS_DIV.innerHTML = 'Working...';
       noDefs = 0;
       console.log('Word: '+'"'+randomWord+'"'+' is too obscure');
       sleep (250);
