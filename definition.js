@@ -164,3 +164,13 @@ const iGiveUp = () => {
  // randomWord = '';
   guessCount = 0;
 };
+
+function giveHelp () {
+  var helpStr = 'Hit [Click for new definition!] to get the dictionary definition of a mystery word.\n'; 
+  helpStr +="Try to guess the word by entering it in the text box and then hit [Submit]\n"
+  helpStr +="If your guess is wrong, another part of the definition will be given as a clue (if there is one) ";
+  helpStr +="along with an additional letter of the mystery word. \n";
+  helpStr +="[Give Up] reveals the word if you can’t work it out.";
+
+alert(helpStr);
+}

@@ -65,7 +65,7 @@ else  {
 console.log('randomWord is: '+randomWord);
 
 
-attemptButton.value = '----';
+attemptButton.value = 'Help';
 attemptButton.style.backgroundColor = 'white';
 myguess.value = '';
 guessCount = 0;
