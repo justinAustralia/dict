@@ -7,7 +7,7 @@ function sleep(ms) {
 
 async function fetchOwlDefinitions(word) {
 
-   
+ 
    await fetch('https://owlbot.info/api/v4/dictionary/'+word, {
      headers: {
      'Authorization': 'Token ' + TOKEN
@@ -17,7 +17,7 @@ async function fetchOwlDefinitions(word) {
 	.then (response =>  {
       // console.log('AAA '+getObjects(response,'','No definition'));
        noDefs = response.definitions.length;
-      // for (i=0; i<noDefs; i++) console.log(i+") "+response.definitions[i].definition);
+      for (i=0; i<noDefs; i++) console.log(i+") "+response.definitions[i].definition);
        owlResponse = response;
        return (1);
    })

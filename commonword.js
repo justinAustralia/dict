@@ -8,7 +8,7 @@ var myTimer = null;
 // Use https://random-word-api.herokuapp.com/home
 //RANDOM_WORD_DICT = 'https://random-word-api.herokuapp.com/word?number=1&swear=0';
 RANDOM_WORD_DICT = 'https://random-word-api.herokuapp.com/word';
-const USE_ONLINE_RANDOM_WORDS = 1
+const USE_ONLINE_RANDOM_WORDS = 0
 
 async function fetchRandomWord () {
 
